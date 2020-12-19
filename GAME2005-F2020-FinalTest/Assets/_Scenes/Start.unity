@@ -516,7 +516,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1717025251}
         m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: GoTo
+        m_MethodName: GoToMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -63,11 +63,12 @@ public class CubeBehaviour : MonoBehaviour
     private MeshFilter meshFilter;
     public Bounds bounds;
     public bool isGrounded;
-
+    public SceneManager[] scenem;
 
     // Start is called before the first frame update
     void Start()
     {
+        scenem = FindObjectsOfType<SceneManager>();
         debug = false;
         meshFilter = GetComponent<MeshFilter>();
 
@@ -79,8 +80,11 @@ public class CubeBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        max = Vector3.Scale(bounds.max, transform.localScale) + transform.position;
-        min = Vector3.Scale(bounds.min, transform.localScale) + transform.position;
+        if (scenem[0].activate)
+        {
+            max = Vector3.Scale(bounds.max, transform.localScale) + transform.position;
+            min = Vector3.Scale(bounds.min, transform.localScale) + transform.position;
+        }
 
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerBehaviour : MonoBehaviour
 {
     public Transform bulletSpawn;
@@ -15,12 +16,11 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Movement")]
     public float speed;
     public bool isGrounded;
-
+    bool activate = false;
 
     public RigidBody3D body;
     public CubeBehaviour cube;
     public Camera playerCam;
-
     void start()
     {
 
@@ -29,8 +29,12 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _Fire();
-        _Move();
+        if (activate)
+        {
+            _Fire();
+            _Move();
+        }
+        
     }
 
     private void _Move()
@@ -98,4 +102,8 @@ public class PlayerBehaviour : MonoBehaviour
         isGrounded = cube.isGrounded;
     }
 
+    public void activateScene()
+	{
+        activate = !activate;
+	}
 }

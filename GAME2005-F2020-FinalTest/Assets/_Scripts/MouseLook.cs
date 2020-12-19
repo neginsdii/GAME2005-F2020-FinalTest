@@ -31,11 +31,11 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         // Ensure the cursor is always locked when set
-        if (lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
+        //if (lockCursor)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //}
+        Cursor.lockState = CursorLockMode.Confined;
         // Allow the script to clamp based on a desired target value.
         var targetOrientation = Quaternion.Euler(targetDirection);
         var targetCharacterOrientation = Quaternion.Euler(targetCharacterDirection);

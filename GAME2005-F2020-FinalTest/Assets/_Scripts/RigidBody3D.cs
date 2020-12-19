@@ -18,6 +18,7 @@ public class RigidBody3D : MonoBehaviour
     public BodyType bodyType;
     public float timer;
     public bool isFalling;
+    public SceneManager[] scenem;
 
     [Header("Attributes")]
     public Vector3 velocity;
@@ -27,6 +28,7 @@ public class RigidBody3D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scenem = FindObjectsOfType<SceneManager>();
         timer = 0.0f;
         gravity = -0.001f;
         velocity = Vector3.zero;
@@ -40,21 +42,24 @@ public class RigidBody3D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bodyType == BodyType.DYNAMIC)
+        if (scenem[0].activate)
         {
-            if (isFalling)
+            if (bodyType == BodyType.DYNAMIC)
             {
-                timer += Time.deltaTime;
-                
-                if (gravityScale < 0)
+                if (isFalling)
                 {
-                    gravityScale = 0;
-                }
+                    timer += Time.deltaTime;
 
-                if (gravityScale > 0)
-                {
-                    velocity += acceleration * 0.5f * timer * timer;
-                    transform.position += velocity;
+                    if (gravityScale < 0)
+                    {
+                        gravityScale = 0;
+                    }
+
+                    if (gravityScale > 0)
+                    {
+                        velocity += acceleration * 0.5f * timer * timer;
+                        transform.position += velocity;
+                    }
                 }
             }
         }

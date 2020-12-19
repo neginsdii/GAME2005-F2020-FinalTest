@@ -15,10 +15,11 @@ public class BulletBehaviour : MonoBehaviour
     public float penetration;
 
     public BulletManager bulletManager;
-
+    public SceneManager[] scenem;
     // Start is called before the first frame update
     void Start()
     {
+        scenem = FindObjectsOfType<SceneManager>();
         isColliding = false;
         radius = Mathf.Max(transform.localScale.x, transform.localScale.y, transform.localScale.z) * 0.5f;
         bulletManager = FindObjectOfType<BulletManager>();
@@ -27,8 +28,11 @@ public class BulletBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _Move();
-        _CheckBounds();
+        if (scenem[0].activate)
+        {
+            _Move();
+            _CheckBounds();
+        }
     }
 
     private void _Move()
