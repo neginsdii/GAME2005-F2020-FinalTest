@@ -171,15 +171,31 @@ public class CollisionManager : MonoBehaviour
                     }
                 }
 
+
+               if ((contactB.face == Vector3.right) ||  (contactB.face == Vector3.left)
+                    || (contactB.face == Vector3.forward) || (contactB.face == Vector3.back))
+				{
+                    if (b.isPlayer) {
+                        if (a.GetComponent<RigidBody3D>().bodyType == BodyType.STATIC)
+                        {
+
+                              b.transform.position += contactB.face * penetration;
+                        }
+                        if (a.GetComponent<RigidBody3D>().bodyType == BodyType.DYNAMIC)
+                        {
+
+                            a.transform.position -= contactB.face * penetration;
+                        } }
+                }
+
                 if (contactB.face == Vector3.down)
                 {
                     a.gameObject.GetComponent<RigidBody3D>().Stop();
                     a.isGrounded = true;
                 }
-                
 
-                // add the new contact
-                a.contacts.Add(contactB);
+                        // add the new contact
+                    a.contacts.Add(contactB);
                 a.isColliding = true;
                 
             }

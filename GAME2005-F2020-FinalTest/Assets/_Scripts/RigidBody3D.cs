@@ -22,6 +22,7 @@ public class RigidBody3D : MonoBehaviour
 
     [Header("Attributes")]
     public Vector3 velocity;
+
     public Vector3 acceleration;
     private float gravity;
 
@@ -57,7 +58,7 @@ public class RigidBody3D : MonoBehaviour
 
                     if (gravityScale > 0)
                     {
-                        velocity += acceleration * 0.5f * timer * timer;
+                        velocity += acceleration * 0.5f * timer ;
                         transform.position += velocity;
                     }
                 }

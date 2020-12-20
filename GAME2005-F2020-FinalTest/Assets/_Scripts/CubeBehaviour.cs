@@ -57,6 +57,7 @@ public class CubeBehaviour : MonoBehaviour
     public Vector3 max;
     public Vector3 min;
     public bool isColliding;
+    public bool isPlayer;
     public bool debug;
     public List<Contact> contacts;
 
